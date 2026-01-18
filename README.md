@@ -2,7 +2,7 @@
 
 ## **Live Demo**: [https://proctorxofficial.vercel.app](https://proctorxofficial.vercel.app)
 
-# In the deployed site. We are using a Free instance of render of backend when you try it will took 50+ seconds for the first time. Then it will work fast as like Real world website. When try to signup wait upto 50 seconds
+# In the deployed site. We are using a Free instance of render for backend when you try. It will took 50+ seconds for the first time. Then it will work fast as like Real world website. When try to signup wait upto 50 seconds
 
 <div align="center">
 
