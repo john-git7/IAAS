@@ -30,7 +30,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "https://proctorx1.vercel.app/",
+      "https://proctorx1.vercel.app",
     ],
     credentials: true
   })
