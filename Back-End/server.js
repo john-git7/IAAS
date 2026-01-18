@@ -10,6 +10,8 @@ import teacherRoutes from './routes/teacherRoutes.js';
 import otpService from './routes/otpService.js';
 import quizRoutes from './routes/quizzRoutes.js';
 import resultRoutes from './routes/resultRoutes.js';
+import aiQuestionRoutes from './routes/AIquestionGenarate.js';
+import monitorRoutes from './monitoring/monitorRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +20,7 @@ dotenv.config();
 console.log("Cloudinary name:", process.env.CLOUDINARY_CLOUD_NAME ? "Loaded ✅" : "Missing ❌");
 console.log("CLOUDINARY_API_KEY:", process.env.CLOUDINARY_API_KEY ? "Loaded ✅" : "Missing ❌");
 console.log("CLOUDINARY_API_SECRET:", process.env.CLOUDINARY_API_SECRET ? "Loaded ✅" : "Missing ❌");
-
+console.log("Gemini API Key:", process.env.Gemini_API_Key ? "Loaded ✅" : "Missing ❌");
 
 const app = express();
 
@@ -27,8 +29,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://proctorx-six.vercel.app",
-      "https://proctorxofficial.vercel.app"
+      "http://localhost:5174",
+      "https://proctorx1.vercel.app/",
     ],
     credentials: true
   })
@@ -45,8 +47,10 @@ app.use('/students', studentRoutes);
 app.use('/otp', otpService);
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/results', resultRoutes);
+app.use('/api/ai', aiQuestionRoutes);
+app.use('/api/monitoring', monitorRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -64,3 +68,5 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get('/', (req, res) => {
   res.send('ProctorX Backend is Running!');
 });
+
+export default app;
